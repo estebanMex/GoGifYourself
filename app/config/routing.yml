@@ -1,0 +1,3 @@
+ggy_app:
+    resource: "@GGYAppBundle/Resources/config/routing.yml"
+    prefix:   /

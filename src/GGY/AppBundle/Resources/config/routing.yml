@@ -1,0 +1,3 @@
+ggy_app_homepage:
+    path:     /
+    defaults: { _controller: GGYAppBundle:Default:index }
