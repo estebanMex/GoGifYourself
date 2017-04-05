@@ -1,3 +1,6 @@
 ggy_app:
     resource: "@GGYAppBundle/Resources/config/routing.yml"
     prefix:   /
+gifs:
+    type: rest
+    resource: GGY\AppBundle\Controller\GifController
