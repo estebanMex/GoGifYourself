@@ -1,0 +1,4 @@
+services:
+#    ggy_data.example:
+#        class: GGY\DataBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

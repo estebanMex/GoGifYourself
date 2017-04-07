@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}GGYAppBundle:Home:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Home:index page</h1>
+    {% for gif in gifs %}
+        <div>
+            <h3>{{ gif.title }}</h3>
+            <img src="{{ gif.link }}" alt="{{ gif.alt }}">
+            <p>By {{ gif.author }} on {{ gif.createdAt | date('d/m/Y') }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
