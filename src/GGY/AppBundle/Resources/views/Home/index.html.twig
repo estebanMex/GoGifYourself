@@ -7,7 +7,7 @@
     {% for gif in gifs %}
         <div>
             <h3>{{ gif.title }}</h3>
-            <img src="{{ gif.link }}" alt="{{ gif.alt }}">
+            <img src="{{ gif.link }}" alt="{{ gif.alt }}" width="300">
             <p>By {{ gif.author }} on {{ gif.createdAt | date('d/m/Y') }}</p>
         </div>
     {% endfor %}

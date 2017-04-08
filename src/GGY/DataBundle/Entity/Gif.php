@@ -3,6 +3,7 @@
 namespace GGY\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Gif
  *
@@ -24,6 +25,9 @@ class Gif
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min=3, minMessage="Gif title length must be at least 3 characters long")
      */
     private $title;
 
@@ -31,6 +35,9 @@ class Gif
      * @var string
      *
      * @ORM\Column(name="link", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Url(message="The provided URL is not a valid URL")
      */
     private $link;
 
@@ -45,6 +52,8 @@ class Gif
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
      */
     private $author;
 

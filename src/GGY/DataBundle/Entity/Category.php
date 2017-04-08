@@ -3,12 +3,15 @@
 namespace GGY\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Category
  *
- * @ORM\Table(name="category")
+ * @ORM\Table(name="category",uniqueConstraints={@ORM\UniqueConstraint(name="category_title_unique",columns={"title"})})
  * @ORM\Entity(repositoryClass="GGY\DataBundle\Repository\CategoryRepository")
+ * @UniqueEntity(fields="title", message="A category with that name already exists")
  */
 class Category
 {
@@ -23,7 +26,9 @@ class Category
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min=3, minMessage="Category title must at least be 3 characters long")
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;

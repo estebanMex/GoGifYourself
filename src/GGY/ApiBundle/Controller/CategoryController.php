@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use GGY\DataBundle\Entity\Category;
 
 class CategoryController extends Controller
 {
@@ -34,6 +35,27 @@ class CategoryController extends Controller
             return new JsonResponse(['message' => 'Category not found'], Response::HTTP_NOT_FOUND);
         }
         return $category;
+    }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Post("/categories")
+     */
+    public function postCategoriesAction(Request $request)
+    {
+        $category = new Category;
+        $form = $this->createForm('GGY\DataBundle\Form\CategoryType', $category);
+        $form->submit($request->request->all());
+        if($form->isValid())
+        {
+            $category->setTitle($request->get('title'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+            return $category;
+        } else {
+            return $form;
+        }
     }
 
 }

@@ -41,13 +41,20 @@ class TagController extends Controller
      * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Post("/tags")
      */
-    public function postPlacesAction(Request $request)
+    public function postTagsAction(Request $request)
     {
         $tag = new Tag;
-        $tag->setTitle($request->get('title'));
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($tag);
-        $em->flush();
-        return $tag;
+        $form = $this->createForm('GGY\DataBundle\Form\TagType', $tag);
+        $form->submit($request->request->all());
+        if($form->isValid())
+        {
+            $tag->setTitle($request->get('title'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($tag);
+            $em->flush();
+            return $tag;
+        } else {
+            return $form;
+        }
     }
 }

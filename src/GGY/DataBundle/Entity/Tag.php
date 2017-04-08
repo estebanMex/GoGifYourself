@@ -3,12 +3,15 @@
 namespace GGY\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Tag
  *
- * @ORM\Table(name="tag")
+ * @ORM\Table(name="tag",uniqueConstraints={@ORM\UniqueConstraint(name="tag_title_unique",columns={"title"})})
  * @ORM\Entity(repositoryClass="GGY\DataBundle\Repository\TagRepository")
+ * @UniqueEntity(fields="title", message="A tag with that name already exists")
  */
 class Tag
 {
@@ -25,6 +28,9 @@ class Tag
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     * @Assert\Length(min=3, minMessage="Tag title must at least be 3 characters long")
      */
     private $title;
 
