@@ -57,4 +57,18 @@ class TagController extends Controller
             return $form;
         }
     }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/tag/{id}")
+     */
+    public function removeTagAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tag = $em->getRepository('GGYDataBundle:Tag')
+            ->find($request->get('id'));
+
+        $em->remove($tag);
+        $em->flush();
+    }
 }

@@ -64,4 +64,18 @@ class GifController extends Controller
             return $form;
         }
     }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/gif/{id}")
+     */
+    public function removeGifAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $gif = $em->getRepository('GGYDataBundle:Gif')
+            ->find($request->get('id'));
+
+        $em->remove($gif);
+        $em->flush();
+    }
 }

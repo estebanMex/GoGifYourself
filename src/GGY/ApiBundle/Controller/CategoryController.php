@@ -58,4 +58,18 @@ class CategoryController extends Controller
         }
     }
 
+    /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/category/{id}")
+     */
+    public function removeCategoryAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $category = $em->getRepository('GGYDataBundle:Category')
+            ->find($request->get('id'));
+
+        $em->remove($category);
+        $em->flush();
+    }
+
 }
