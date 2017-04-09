@@ -72,7 +72,31 @@ class CategoryController extends Controller
             $em->remove($category);
             $em->flush();
         }
+    }
 
+    /**
+     * @Rest\View()
+     * @Rest\Patch("/category/{id}")
+     */
+    public function updateCategoryAction(Request $request)
+    {
+        $category = $this->getDoctrine()->getManager()->getRepository('GGYDataBundle:Category')->find($request->get('id'));
+
+        if (empty($category)) {
+            return \FOS\RestBundle\View\View::create(['message' => 'Category not found'], Response::HTTP_NOT_FOUND);
+        }
+        $form = $this->createForm('GGY\DataBundle\Form\CategoryType', $category);
+
+        $form->submit($request->request->all(), false);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($category);
+            $em->flush();
+            return $category;
+        } else {
+            return $form;
+        }
     }
 
 }

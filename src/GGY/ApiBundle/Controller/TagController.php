@@ -73,4 +73,29 @@ class TagController extends Controller
         }
 
     }
+
+    /**
+     * @Rest\View()
+     * @Rest\Patch("/tag/{id}")
+     */
+    public function updateTagAction(Request $request)
+    {
+        $tag = $this->getDoctrine()->getManager()->getRepository('GGYDataBundle:Tag')->find($request->get('id'));
+
+        if (empty($tag)) {
+            return \FOS\RestBundle\View\View::create(['message' => 'Tag not found'], Response::HTTP_NOT_FOUND);
+        }
+        $form = $this->createForm('GGY\DataBundle\Form\TagType', $tag);
+
+        $form->submit($request->request->all(), false);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($tag);
+            $em->flush();
+            return $tag;
+        } else {
+            return $form;
+        }
+    }
 }

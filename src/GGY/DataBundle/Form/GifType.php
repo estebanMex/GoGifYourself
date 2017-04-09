@@ -2,9 +2,11 @@
 
 namespace GGY\DataBundle\Form;
 
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class GifType extends AbstractType
 {
@@ -18,8 +20,8 @@ class GifType extends AbstractType
             ->add('link')
             ->add('alt')
             ->add('author')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('createdAt', DateTimeType::class)
+            ->add('updatedAt', DateTimeType::class)
             ->add('categories')
             ->add('tags')
         ;

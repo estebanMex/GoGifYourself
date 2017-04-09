@@ -32,7 +32,7 @@ class GifController extends Controller
         $gif = $em->getRepository('GGYDataBundle:Gif')->findById($request->get('id'));
 
         if (empty($gif)) {
-            return new JsonResponse(['message' => 'Gif not found'], Response::HTTP_NOT_FOUND);
+            return \FOS\RestBundle\View\View::create(['message' => 'Gif not found'], Response::HTTP_NOT_FOUND);
         }
         return $gif;
     }
@@ -78,6 +78,32 @@ class GifController extends Controller
             $em->remove($gif);
             $em->flush();
         }
+    }
 
+    /**
+     * @Rest\View()
+     * @Rest\Patch("/gif/{id}")
+     */
+    public function updateGifAction(Request $request)
+    {
+        $gif = $this->getDoctrine()->getManager()->getRepository('GGYDataBundle:Gif')->find($request->get('id'));
+
+        if (empty($gif)) {
+            return \FOS\RestBundle\View\View::create(['message' => 'Gif not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $form = $this->createForm('GGY\DataBundle\Form\GifType', $gif);
+
+        $form->submit($request->request->all(), false);
+
+        if ($form->isValid()) {
+            $gif->setUpdatedAt(new \DateTime());
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($gif);
+            $em->flush();
+            return $gif;
+        } else {
+            return $form;
+        }
     }
 }
