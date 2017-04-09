@@ -67,8 +67,10 @@ class TagController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tag = $em->getRepository('GGYDataBundle:Tag')
             ->find($request->get('id'));
+        if ($tag){
+            $em->remove($tag);
+            $em->flush();
+        }
 
-        $em->remove($tag);
-        $em->flush();
     }
 }

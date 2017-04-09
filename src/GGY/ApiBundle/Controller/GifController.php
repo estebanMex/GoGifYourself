@@ -74,8 +74,10 @@ class GifController extends Controller
         $em = $this->getDoctrine()->getManager();
         $gif = $em->getRepository('GGYDataBundle:Gif')
             ->find($request->get('id'));
+        if ($gif){
+            $em->remove($gif);
+            $em->flush();
+        }
 
-        $em->remove($gif);
-        $em->flush();
     }
 }

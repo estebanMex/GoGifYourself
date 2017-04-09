@@ -68,8 +68,11 @@ class CategoryController extends Controller
         $category = $em->getRepository('GGYDataBundle:Category')
             ->find($request->get('id'));
 
-        $em->remove($category);
-        $em->flush();
+        if ($category){
+            $em->remove($category);
+            $em->flush();
+        }
+
     }
 
 }
