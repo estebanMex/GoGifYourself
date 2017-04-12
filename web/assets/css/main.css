@@ -3,15 +3,16 @@ body{
     color:white;
 }
 /* DEV */
-/*div{
+div{
     background-color:#111111;
     border:1px dashed #F9F9F9;
-}*/
-
+}
+/* NAV */
 .navbar-custom, footer .footer-above, footer .footer-below  {
     background: black
 }
 
+/* MAIN CONTENT */
 section#maincontent{
     background-color: #080808;
 }
@@ -20,7 +21,10 @@ section#maincontent{
     background-color: #101010;
 }
 
-span#categorytag{
-    background-color: hotpink;
-    display: inline-block;
+div.categorytag button{
+
+}
+
+.btn:hover{
+    background-color: black !important;
 }

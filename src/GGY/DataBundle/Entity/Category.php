@@ -33,6 +33,12 @@ class Category
      */
     private $title;
 
+    /**
+     * @var string
+     * @ORM\Column(name="tag_color", type="string", length=7)
+     */
+    private $tagColor;
+
 
     /**
      * Get id
@@ -67,5 +73,28 @@ class Category
     {
         return $this->title;
     }
-}
 
+    /**
+     * Set tagColor
+     *
+     * @param string $tagColor
+     *
+     * @return Category
+     */
+    public function setTagColor($tagColor)
+    {
+        $this->tagColor = $tagColor;
+
+        return $this;
+    }
+
+    /**
+     * Get tagColor
+     *
+     * @return string
+     */
+    public function getTagColor()
+    {
+        return $this->tagColor;
+    }
+}

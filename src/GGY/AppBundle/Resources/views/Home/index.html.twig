@@ -13,9 +13,10 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <h1>Les derniers Gifs</h1>
             {% for gif in gifs %}
-            <div class="col-lg-2 col-md-4">
+            <div class="col-lg-2 col-md-4 categorytag">
+                <h4>Catégories</h4>
                 {%  for category in gif.categories %}
-                    <button type="button" class="btn btn-primary">{{ category.title }}</button>
+                    <button type="button" class="btn" style="background-color: {{ category.tagColor }}">{{ category.title }}</button>
                 {% endfor %}
             </div>
             <div class="col-lg-10 col-md-8">
