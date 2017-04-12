@@ -1,14 +1,90 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}GGYAppBundle:Home:index{% endblock %}
+{% block title %}{{ parent() }}Les derniers gifs{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Home:index page</h1>
-    {% for gif in gifs %}
-        <div>
-            <h3>{{ gif.title }}</h3>
-            <img src="{{ gif.link }}" alt="{{ gif.alt }}" width="300">
-            <p>By {{ gif.author }} on {{ gif.createdAt | date('d/m/Y') }}</p>
+{{ parent() }}
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+<!-- Navigation -->
+<section id="maincontent">
+
+    <div class="container">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <h1>Les derniers Gifs</h1>
+            {% for gif in gifs %}
+            <div class="col-lg-2 col-md-4">
+                {%  for category in gif.categories %}
+                    <button type="button" class="btn btn-primary">{{ category.title }}</button>
+                {% endfor %}
+            </div>
+            <div class="col-lg-10 col-md-8">
+                    <article class="col-lg-12">
+                        <h3>{{ gif.title }}</h3>
+                        <img src="{{ gif.link }}" alt="{{ gif.alt }}" width="300">
+                        <p>By {{ gif.author }} on {{ gif.createdAt | date('d/m/Y') }}</p>
+                    </article>
+            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        <div class="col-lg-3 col-md-3 lighterme">
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+    <div class="footer-above">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-md-4">
+                    <h3>Location</h3>
+                    <p>3481 Melrose Place
+                        <br>Beverly Hills, CA 90210</p>
+                </div>
+                <div class="footer-col col-md-4">
+                    <h3>Around the Web</h3>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><span class="sr-only">Linked In</span><i class="fa fa-fw fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><span class="sr-only">Dribble</span><i class="fa fa-fw fa-dribbble"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col col-md-4">
+                    <h3>About Freelancer</h3>
+                    <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-below">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright &copy; Your Website 2016
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    <a class="btn btn-primary" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+</div>
 {% endblock %}

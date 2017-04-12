@@ -1,0 +1,26 @@
+body{
+    background-color:black;
+    color:white;
+}
+/* DEV */
+/*div{
+    background-color:#111111;
+    border:1px dashed #F9F9F9;
+}*/
+
+.navbar-custom, footer .footer-above, footer .footer-below  {
+    background: black
+}
+
+section#maincontent{
+    background-color: #080808;
+}
+
+.lighterme{
+    background-color: #101010;
+}
+
+span#categorytag{
+    background-color: hotpink;
+    display: inline-block;
+}
