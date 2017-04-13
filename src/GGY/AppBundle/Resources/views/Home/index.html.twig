@@ -22,7 +22,9 @@
             <div class="col-lg-10 col-md-8">
                     <article class="col-lg-12">
                         <h3>{{ gif.title }}</h3>
-                        <img src="{{ gif.link }}" alt="{{ gif.alt }}" width="300">
+                        <div class="col-lg-12 nomargin">
+                            <img src="{{ gif.link }}" alt="{{ gif.alt }}" width="100%">
+                        </div>
                         <p>By {{ gif.author }} on {{ gif.createdAt | date('d/m/Y') }}</p>
                     </article>
             </div>
