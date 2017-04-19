@@ -82,3 +82,10 @@ fos_rest:
             - { path: '^/', stop: true }
     body_listener:
         enabled: true
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: UserBundle\Entity\User
+    from_email:
+        address: "noreply@yourcompany.com"
+        sender_name: "No Reply"
