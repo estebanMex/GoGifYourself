@@ -55,7 +55,6 @@ class GifController extends Controller
             $gif->setAlt($alt);
             $gif->setAuthor($request->get('author'));
             $gif->setCreatedAt(new \DateTime);
-            $gif->setUpdatedAt(new \DateTime);
             $em = $this->getDoctrine()->getManager();
             $em->persist($gif);
             $em->flush();
@@ -97,7 +96,6 @@ class GifController extends Controller
         $form->submit($request->request->all(), false);
 
         if ($form->isValid()) {
-            $gif->setUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->merge($gif);
             $em->flush();

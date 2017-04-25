@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="gif")
  * @ORM\Entity(repositoryClass="GGY\DataBundle\Repository\GifRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Gif
 {
@@ -319,5 +320,14 @@ class Gif
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /** HOME MADE FUNCTIONS **/
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateDate()
+    {
+        $this->setUpdatedAt(new \DateTime());
     }
 }
