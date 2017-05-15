@@ -5,6 +5,7 @@ namespace GGY\DataBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Category
@@ -38,6 +39,13 @@ class Category
      * @ORM\Column(name="tag_color", type="string", length=7)
      */
     private $tagColor;
+
+    /**
+     * @var string
+     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"title"},separator="-", updatable=true, unique=true)
+     */
+    private $slug;
 
 
     /**
@@ -96,5 +104,29 @@ class Category
     public function getTagColor()
     {
         return $this->tagColor;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Category
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

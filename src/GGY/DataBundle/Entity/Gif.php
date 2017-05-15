@@ -4,6 +4,7 @@ namespace GGY\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Gif
  *
@@ -66,9 +67,16 @@ class Gif
     private $createdAt;
 
     /**
+     * @var string
+     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"title"},separator="-", updatable=true, unique=true)
+     */
+    private $slug;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -329,5 +337,29 @@ class Gif
     public function updateDate()
     {
         $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Gif
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
