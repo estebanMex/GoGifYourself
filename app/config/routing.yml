@@ -1,6 +1,5 @@
 ggy_app:
     resource: "@GGYAppBundle/Resources/config/routing.yml"
-    prefix:   /
 ggy_api_gif:
     type: rest
     prefix: /api

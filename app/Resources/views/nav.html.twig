@@ -5,7 +5,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="#page-top">GOGIFYOURSELF</a>
+            <a class="navbar-brand" href="{{ path('index') }}">GOGIFYOURSELF</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,7 +18,7 @@
                     <a href="#portfolio">Les dernières</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="/list">Catégories</a>
+                    <a href="{{ path('list_categories') }}">Catégories</a>
                 </li>
                 <li class="page-scroll">
                     <a href="#contact">Tags</a>

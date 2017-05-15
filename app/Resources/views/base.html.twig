@@ -6,25 +6,25 @@
         <title>{% block title %}Go Gif Yourself - {% endblock %}</title>
         {% block stylesheets %}
             <!-- Bootstrap Core CSS -->
-            <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
             <!-- Theme CSS -->
-            <link href="assets/css/freelancer.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset('assets/css/freelancer.min.css') }}" rel="stylesheet" type="text/css">
             <!-- Custom Fonts -->
-            <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
             <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
             <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-            <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}"/>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <<body id="page-top" class="index">
+    <body id="page-top" class="index">
         {% block body %}
         {% include '::nav.html.twig' %}
         {% endblock %}
         {% block javascripts %}
-            <script type="text/javascript" src="assets/vendor/jquery/jquery.min.js"></script>
-            <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="assets/js/freelancer.min.js"></script>
+            <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/js/freelancer.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>

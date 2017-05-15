@@ -4,10 +4,14 @@
 
 {% block body %}
     {{ parent() }}
-<h1>Catégories</h1>
-    <  >
-        {% for cat in categories %}
-            <li>{{ cat.title }}</li>
-        {% endfor %}
-    </ul>
+<section id="maincontent">
+    <div class="container">
+        <h1>Catégories</h1>
+        <ul>
+            {% for cat in categories %}
+                <li>{{ cat.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
 {% endblock %}
