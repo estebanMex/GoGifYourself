@@ -10,4 +10,7 @@ namespace GGY\DataBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function listByAlphabet(){
+        return $this->getEntityManager()->createQuery("SELECT c from GGYDataBundle:Category c order by c.title ASC")->getResult();
+    }
 }

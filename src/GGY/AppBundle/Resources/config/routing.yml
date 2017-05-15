@@ -1,3 +1,7 @@
 index:
     path:     /
     defaults: { _controller: GGYAppBundle:Home:index }
+
+list:
+    path:     /categories
+    defaults: { _controller: GGYAppBundle:Categories:list }
