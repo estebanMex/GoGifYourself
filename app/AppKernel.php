@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new GGY\AppBundle\GGYAppBundle(),
             new GGY\ApiBundle\GGYApiBundle(),
             new GGY\DataBundle\GGYDataBundle(),
