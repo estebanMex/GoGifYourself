@@ -1,7 +1,8 @@
-index:
-    path:     /
-    defaults: { _controller: GGYAppBundle:Home:index }
-
-categories:
-    resource: "@GGYAppBundle/Controller/CategoriesController.php"
+gif:
+    resource: GGY\AppBundle\Controller\GifController
     type:     annotation
+categories:
+    resource: GGY\AppBundle\Controller\CategoriesController
+    type:     annotation
+    prefix:   /categories
+
