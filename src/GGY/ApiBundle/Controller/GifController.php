@@ -54,7 +54,6 @@ class GifController extends Controller
             $alt = empty($request->get('alt')) ? $request->get('title') : $request->get('alt');
             $gif->setAlt($alt);
             $gif->setAuthor($request->get('author'));
-            $gif->setCreatedAt(new \DateTime);
             $em = $this->getDoctrine()->getManager();
             $em->persist($gif);
             $em->flush();

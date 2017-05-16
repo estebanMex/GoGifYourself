@@ -62,7 +62,8 @@ class Gif
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -76,6 +77,7 @@ class Gif
     /**
      * @var \DateTime
      *
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
@@ -328,15 +330,6 @@ class Gif
     public function getTags()
     {
         return $this->tags;
-    }
-
-    /** HOME MADE FUNCTIONS **/
-    /**
-     * @ORM\PreUpdate
-     */
-    public function updateDate()
-    {
-        $this->setUpdatedAt(new \DateTime());
     }
 
     /**
