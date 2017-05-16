@@ -10,4 +10,7 @@ namespace GGY\DataBundle\Repository;
  */
 class TagRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function listByAlphabet(){
+        return $this->getEntityManager()->createQuery("SELECT t from GGYDataBundle:Tag t order by t.title ASC")->getResult();
+    }
 }

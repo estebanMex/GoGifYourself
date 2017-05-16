@@ -5,7 +5,7 @@ namespace GGY\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * @Route("/", name="list_categories")

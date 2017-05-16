@@ -1,8 +1,12 @@
 gif:
     resource: GGY\AppBundle\Controller\GifController
     type:     annotation
-categories:
-    resource: GGY\AppBundle\Controller\CategoriesController
+category:
+    resource: GGY\AppBundle\Controller\CategoryController
     type:     annotation
     prefix:   /categories
+tag:
+    resource: GGY\AppBundle\Controller\TagController
+        type:     annotation
+        prefix:   /tags
 
