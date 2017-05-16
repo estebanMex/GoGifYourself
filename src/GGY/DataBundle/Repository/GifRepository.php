@@ -10,4 +10,8 @@ namespace GGY\DataBundle\Repository;
  */
 class GifRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByCategorySlug($slug)
+    {
+        return $this->getEntityManager()->createQuery("SELECT g from GGYDataBundle:Gif g order by c.title ASC")->getResult();
+    }
 }

@@ -82,7 +82,7 @@ class Gif
 
     /**
      * Many Gifs have Many Categories.
-     * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Category", inversedBy="gifs")
      * @ORM\JoinTable(name="gifs_categories",
      *      joinColumns={@ORM\JoinColumn(name="gif_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}

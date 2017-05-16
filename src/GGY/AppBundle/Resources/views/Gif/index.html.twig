@@ -11,7 +11,12 @@
 
         <div class="container">
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <h1>Les derniers Gifs</h1>
+                {% if title is defined %}
+                    <h1>{{ title }}</h1>
+                {% else %}
+                    <h1>Les derniers Gifs</h1>
+                {% endif %}
+
                 {% for gif in gifs %}
                     <div class="col-lg-2 col-md-4 categorytag">
                         <h4>Catégories</h4>

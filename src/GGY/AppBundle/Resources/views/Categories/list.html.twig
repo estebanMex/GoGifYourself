@@ -9,7 +9,7 @@
         <h1>Catégories</h1>
         <ul>
             {% for cat in categories %}
-                <li>{{ cat.title }}</li>
+                <li><a href="{{ path('gif_by_category_slug', {'slug' : cat.slug}) }}">{{ cat.title }}</a></li>
             {% endfor %}
         </ul>
     </div>
