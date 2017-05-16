@@ -94,7 +94,7 @@ class Gif
 
     /**
      * Many Gifs have Many Tags.
-     * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Tag")
+     * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Tag", inversedBy="gifs")
      * @ORM\JoinTable(name="gifs_tags",
      *      joinColumns={@ORM\JoinColumn(name="gif_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}

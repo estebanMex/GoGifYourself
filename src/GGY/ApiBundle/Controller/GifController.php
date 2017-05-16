@@ -12,7 +12,7 @@ use GGY\DataBundle\Entity\Gif;
 class GifController extends Controller
 {
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"gif"})
      * @Rest\Get("/gifs")
      */
     public function getGifsAction(Request $request)
@@ -23,7 +23,7 @@ class GifController extends Controller
     }
 
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"gif"})
      * @Rest\Get("/gif/{id}")
      */
     public function getGifAction(Request $request)

@@ -1,0 +1,48 @@
+GGY\DataBundle\Entity\Gif:
+    attributes:
+        id:
+            groups: ['gif', 'category']
+        title:
+            groups: ['gif', 'category']
+        link:
+            groups: ['gif', 'category']
+        alt:
+            groups: ['gif', 'category']
+        author:
+            groups: ['gif', 'category']
+        createdAt:
+            groups: ['gif', 'category']
+        updatedAt:
+            groups: ['gif', 'category']
+        slug:
+            groups: ['gif', 'category']
+        categories:
+            groups: ['gif']
+        tags:
+            groups: ['gif']
+
+GGY\DataBundle\Entity\Category:
+    attributes:
+        id:
+            groups: ['gif', 'category']
+        title:
+            groups: ['gif', 'category']
+        tagColor:
+            groups: ['gif', 'category']
+        slug:
+            groups: ['gif', 'category']
+        gifs:
+            groups: ['category']
+
+GGY\DataBundle\Entity\Tag:
+    attributes:
+        id:
+            groups: ['gif', 'tag']
+        title:
+            groups: ['gif', 'tag']
+        tagColor:
+            groups: ['gif', 'tag']
+        slug:
+            groups: ['gif', 'tag']
+        gifs:
+            groups: ['tag']

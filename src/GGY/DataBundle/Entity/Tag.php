@@ -48,6 +48,12 @@ class Tag
      */
     private $slug;
 
+    /**
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Gif", mappedBy="tags")
+     */
+    private $gifs;
+
 
     /**
      * Get id
@@ -129,5 +135,46 @@ class Tag
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->gifs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add gif
+     *
+     * @param \GGY\DataBundle\Entity\Gif $gif
+     *
+     * @return Tag
+     */
+    public function addGif(\GGY\DataBundle\Entity\Gif $gif)
+    {
+        $this->gifs[] = $gif;
+
+        return $this;
+    }
+
+    /**
+     * Remove gif
+     *
+     * @param \GGY\DataBundle\Entity\Gif $gif
+     */
+    public function removeGif(\GGY\DataBundle\Entity\Gif $gif)
+    {
+        $this->gifs->removeElement($gif);
+    }
+
+    /**
+     * Get gifs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGifs()
+    {
+        return $this->gifs;
     }
 }
