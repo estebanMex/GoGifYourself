@@ -7,6 +7,5 @@ category:
     prefix:   /categories
 tag:
     resource: GGY\AppBundle\Controller\TagController
-        type:     annotation
-        prefix:   /tags
-
+    type:     annotation
+    prefix:   /tags

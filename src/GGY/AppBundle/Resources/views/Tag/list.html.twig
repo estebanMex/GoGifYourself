@@ -1,7 +1,17 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}GGYAppBundle:Tag:list{% endblock %}
+{% block title %}{{ parent() }}Tags{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Tag:list page</h1>
+    {{ parent() }}
+    <section id="maincontent">
+        <div class="container">
+            <h1>Tags</h1>
+            <ul>
+                {% for tag in tags %}
+                    <li><a href="{{ path('gif_by_tag_slug', {'slug' : tag.slug}) }}">{{ tag.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 {% endblock %}
