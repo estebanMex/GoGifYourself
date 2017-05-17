@@ -53,11 +53,9 @@ class Gif
     /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
+     * @ORM\ManyToOne(targetEntity="GGY\UserBundle\Entity\User", inversedBy="gifs")
      */
-    private $author;
+    private $user;
 
     /**
      * @var \DateTime
@@ -182,30 +180,6 @@ class Gif
     public function getAlt()
     {
         return $this->alt;
-    }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     *
-     * @return Gif
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -354,5 +328,29 @@ class Gif
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \GGY\UserBundle\Entity\User $user
+     *
+     * @return Gif
+     */
+    public function setUser(\GGY\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \GGY\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

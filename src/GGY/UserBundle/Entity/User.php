@@ -23,6 +23,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="GGY\DataBundle\Entity\Gif", mappedBy="user")
+     */
+    private $gifs;
+
+    /**
      * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Category", inversedBy="users")
      * @ORM\JoinTable(name="users_categories")
      */
@@ -60,5 +65,39 @@ class User extends BaseUser
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add gif
+     *
+     * @param \GGY\DataBundle\Entity\Gif $gif
+     *
+     * @return User
+     */
+    public function addGif(\GGY\DataBundle\Entity\Gif $gif)
+    {
+        $this->gifs[] = $gif;
+
+        return $this;
+    }
+
+    /**
+     * Remove gif
+     *
+     * @param \GGY\DataBundle\Entity\Gif $gif
+     */
+    public function removeGif(\GGY\DataBundle\Entity\Gif $gif)
+    {
+        $this->gifs->removeElement($gif);
+    }
+
+    /**
+     * Get gifs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGifs()
+    {
+        return $this->gifs;
     }
 }
