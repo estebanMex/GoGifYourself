@@ -53,6 +53,10 @@ class Category
      */
     private $gifs;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="GGY\UserBundle\Entity\User", mappedBy="categories")
+     */
+    private $users;
 
     /**
      * Get id
@@ -175,5 +179,39 @@ class Category
     public function getGifs()
     {
         return $this->gifs;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \GGY\UserBundle\Entity\User $user
+     *
+     * @return Category
+     */
+    public function addUser(\GGY\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \GGY\UserBundle\Entity\User $user
+     */
+    public function removeUser(\GGY\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

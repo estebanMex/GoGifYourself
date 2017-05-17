@@ -21,5 +21,44 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-}
 
+    /**
+     * @ORM\ManyToMany(targetEntity="GGY\DataBundle\Entity\Category", inversedBy="users")
+     * @ORM\JoinTable(name="users_categories")
+     */
+    private $categories;
+
+    /**
+     * Add category
+     *
+     * @param \GGY\DataBundle\Entity\Category $category
+     *
+     * @return User
+     */
+    public function addCategory(\GGY\DataBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \GGY\DataBundle\Entity\Category $category
+     */
+    public function removeCategory(\GGY\DataBundle\Entity\Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+}
